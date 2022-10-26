@@ -5,16 +5,19 @@ canvas.height = 1080;
 
 const phrase = document.querySelector(".phrase input");
 const generateWallpaperButton = document.querySelector(".generate button");
+const modeToggleButton = document.querySelector(".light-dark-mode button");
 
 generateWallpaperButton.addEventListener("click", drawWallpaper);
 
-function drawBackground() {
-	ctx.fillStyle = "white";
+modeToggleButton.addEventListener("click", toggleMode);
+
+function drawBackground(lightModeOn) {
+	ctx.fillStyle = lightModeOn ? "white" : "black";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function drawText(text) {
-	ctx.fillStyle = "black";
+function drawText(text, lightModeOn) {
+	ctx.fillStyle = lightModeOn ? "black" : "white";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
 	ctx.font = "150px serif";
@@ -23,6 +26,18 @@ function drawText(text) {
 
 function drawWallpaper() {
 	const wallpaperText = phrase.value;
-	drawBackground()
-	drawText(wallpaperText)
+	const lightModeOn = getCurrentMode();
+	drawBackground(lightModeOn);
+	drawText(wallpaperText, lightModeOn);
+}
+
+function getCurrentMode() {
+	const modeToggleButton = document.querySelector(".light-dark-mode button");
+	const lightModeOn = modeToggleButton.classList.contains("light");
+	return lightModeOn;
+}
+
+function toggleMode() {
+	const modeToggleButton = document.querySelector(".light-dark-mode button");
+	modeToggleButton.classList.toggle("light");
 }
