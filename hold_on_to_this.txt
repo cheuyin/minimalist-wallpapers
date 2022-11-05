@@ -1,0 +1,11 @@
+const modeToggleButton = document.querySelector(".light-dark-mode button");
+modeToggleButton.addEventListener("click", toggleMode);
+function getCurrentMode() {
+	const modeToggleButton = document.querySelector(".light-dark-mode button");
+	const lightModeOn = modeToggleButton.classList.contains("light");
+	return lightModeOn;
+}
+function toggleMode() {
+	const modeToggleButton = document.querySelector(".light-dark-mode button");
+	modeToggleButton.classList.toggle("light");
+}
