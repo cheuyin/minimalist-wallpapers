@@ -47,17 +47,14 @@ class Canvas {
 
 	updateText(text) {
 		this.text = text;
-		this.render();
 	}
 
 	switchMode() {
 		this.lightModeOn = !this.lightModeOn;
-		this.render();
 	}
 
 	switchFontStyle() {
 		this.fontStyle = this.fontStyle === "serif" ? "sans-serif" : "serif";
-		this.render();
 	}
 
 	generateProportionalFontSize() {
@@ -81,8 +78,6 @@ class Canvas {
 			default:
 				console.log("Something went wrong with changing the display size");
 		}
-
-		this.render();
 	}
 
 	render() {

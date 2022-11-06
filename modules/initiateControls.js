@@ -2,9 +2,18 @@ function initiateControls(canvas) {
 	function initiateGenerateWallpaperButton() {
 		const phrase = document.querySelector(".phrase input");
 		const generateWallpaperButton = document.querySelector(".generate button");
-		generateWallpaperButton.addEventListener("click", () =>
-			canvas.updateText(phrase.value)
-		);
+		generateWallpaperButton.addEventListener("click", () => {
+			canvas.updateText(phrase.value);
+			canvas.render();
+		});
+	}
+
+	function initiateInstantPreview() {
+		const phraseInput = document.querySelector(".phrase input");
+		phraseInput.addEventListener("input", (event) => {
+			canvas.updateText(event.target.value);
+			canvas.render();
+		});
 	}
 
 	function initiateLightDarkModeButton() {
@@ -14,6 +23,7 @@ function initiateControls(canvas) {
 
 		lightDarkModeButton.addEventListener("click", () => {
 			canvas.switchMode();
+			canvas.render();
 		});
 	}
 
@@ -22,6 +32,7 @@ function initiateControls(canvas) {
 
 		fontStyleToggleButton.addEventListener("click", () => {
 			canvas.switchFontStyle();
+			canvas.render();
 		});
 	}
 
@@ -29,6 +40,7 @@ function initiateControls(canvas) {
 		const displaySizeOptions = document.querySelector("#display_sizes");
 		displaySizeOptions.addEventListener("change", (event) => {
 			canvas.changeDisplaySize(event.target.value);
+			canvas.render();
 		});
 	}
 
@@ -49,6 +61,7 @@ function initiateControls(canvas) {
 	initiateFontStyleToggleButton();
 	initiateDisplaySizeOptions();
 	initiateDownloadButton();
+	initiateInstantPreview();
 }
 
 export default initiateControls;
