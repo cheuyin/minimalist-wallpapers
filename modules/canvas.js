@@ -1,18 +1,13 @@
 class Canvas {
 	constructor(text, width, height, lightModeOn) {
-		this.text = text;
-		this.width = width;
-		this.height = height;
-		this.lightModeOn = lightModeOn;
-
 		// Add HTML Canvas stuff
 		this.canvas = document.querySelector("canvas");
 		this.ctx = this.canvas.getContext("2d");
-		this.canvas.width = this.width;
-		this.canvas.height = this.height;
+		this.canvas.width = width;
+		this.canvas.height = height;
 
-		// Additional settings
-		this.fontSize = this.generateProportionalFontSize();
+		this.text = text;
+		this.lightModeOn = lightModeOn;
 		this.fontStyle = "serif";
 
 		this.render();
@@ -24,10 +19,11 @@ class Canvas {
 	}
 
 	drawText() {
+		const fontSize = this.generateProportionalFontSize();
 		this.ctx.fillStyle = this.lightModeOn ? "black" : "white";
 		this.ctx.textAlign = "center";
 		this.ctx.textBaseline = "middle";
-		this.ctx.font = `${this.fontSize} ${this.fontStyle}`;
+		this.ctx.font = `${fontSize} ${this.fontStyle}`;
 		this.ctx.fillText(this.text, this.canvas.width / 2, this.canvas.height / 2);
 	}
 
@@ -47,7 +43,28 @@ class Canvas {
 	}
 
 	generateProportionalFontSize() {
-		return this.width / 20 + "px";
+		return this.canvas.width / 20 + "px";
+	}
+
+	changeDisplaySize(size) {
+		switch (size) {
+			case "phone":
+				this.canvas.width = 1170;
+				this.canvas.height = 2532;
+				break;
+			case "tablet":
+				this.canvas.width = 2388;
+				this.canvas.height = 1668;
+				break;
+			case "desktop":
+				this.canvas.width = 3840;
+				this.canvas.height = 2160;
+				break;
+			default:
+				console.log("Something went wrong with changing the display size");
+		}
+
+		this.render();
 	}
 
 	render() {

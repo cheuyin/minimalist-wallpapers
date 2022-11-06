@@ -25,9 +25,17 @@ function initiateControls(canvas) {
 		});
 	}
 
+	function initiateDisplaySizeOptions() {
+		const displaySizeOptions = document.querySelector("#display_sizes");
+		displaySizeOptions.addEventListener("change", (event) => {
+			canvas.changeDisplaySize(event.target.value);
+		});
+	}
+
 	initiateGenerateWallpaperButton();
 	initiateLightDarkModeButton();
 	initiateFontStyleToggleButton();
+	initiateDisplaySizeOptions();
 }
 
 export default initiateControls;
