@@ -32,10 +32,23 @@ function initiateControls(canvas) {
 		});
 	}
 
+	function initiateDownloadButton() {
+		const downloadWallpaperButton = document.querySelector(
+			".canvas_container .download_button"
+		);
+		downloadWallpaperButton.addEventListener("click", () => {
+			const link = document.createElement("a");
+			link.download = "minipaper.png";
+			link.href = document.querySelector(".main_canvas").toDataURL();
+			link.click();
+		});
+	}
+
 	initiateGenerateWallpaperButton();
 	initiateLightDarkModeButton();
 	initiateFontStyleToggleButton();
 	initiateDisplaySizeOptions();
+	initiateDownloadButton();
 }
 
 export default initiateControls;

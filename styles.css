@@ -3,8 +3,19 @@
     font-size: 12px;
 }
 
-canvas {
-    /* width: 400px; */
+.canvas_container {
+    position: relative;
+    width: 50%;
+}
+
+.canvas_container .main_canvas {
+    width: 100%;
     height: auto;
     border: 2px solid black;
+}
+
+.canvas_container button {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
 }
