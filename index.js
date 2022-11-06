@@ -1,10 +1,5 @@
 import Canvas from "./modules/canvas.js";
+import initiateControls from "./modules/initiateControls.js";
 
-const canvas = new Canvas("Hello", 300, 5000, true);
-
-const phrase = document.querySelector(".phrase input");
-const generateWallpaperButton = document.querySelector(".generate button");
-
-generateWallpaperButton.addEventListener("click", () =>
-	canvas.updateText(phrase.value)
-);
+const canvas = new Canvas("Hello", 800, 400, true);
+initiateControls(canvas);

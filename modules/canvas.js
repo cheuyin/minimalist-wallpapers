@@ -36,8 +36,18 @@ class Canvas {
 		this.render();
 	}
 
+	switchMode() {
+		this.lightModeOn = !this.lightModeOn;
+		this.render();
+	}
+
+	switchFontStyle() {
+		this.fontStyle = this.fontStyle === "serif" ? "sans-serif" : "serif";
+		this.render();
+	}
+
 	generateProportionalFontSize() {
-		return this.width / 12 + "px";
+		return this.width / 20 + "px";
 	}
 
 	render() {
