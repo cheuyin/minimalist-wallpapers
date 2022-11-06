@@ -1,13 +1,31 @@
+const displaySizes = {
+	phone: {
+		width: 1170,
+		height: 2532,
+	},
+	tablet: {
+		width: 2388,
+		height: 1668,
+	},
+	desktop: {
+		width: 3840,
+		height: 2160,
+	},
+};
+
+const initialDisplaySize = "desktop";
+const initialText = "Science";
+
 class Canvas {
-	constructor(text, width, height, lightModeOn) {
+	constructor() {
 		// Add HTML Canvas stuff
 		this.canvas = document.querySelector("canvas");
 		this.ctx = this.canvas.getContext("2d");
-		this.canvas.width = width;
-		this.canvas.height = height;
+		this.canvas.width = displaySizes[initialDisplaySize].width;
+		this.canvas.height = displaySizes[initialDisplaySize].height;
 
-		this.text = text;
-		this.lightModeOn = lightModeOn;
+		this.text = initialText;
+		this.lightModeOn = true;
 		this.fontStyle = "serif";
 
 		this.render();
@@ -49,16 +67,16 @@ class Canvas {
 	changeDisplaySize(size) {
 		switch (size) {
 			case "phone":
-				this.canvas.width = 1170;
-				this.canvas.height = 2532;
+				this.canvas.width = displaySizes.phone.width;
+				this.canvas.height = displaySizes.phone.height;
 				break;
 			case "tablet":
-				this.canvas.width = 2388;
-				this.canvas.height = 1668;
+				this.canvas.width = displaySizes.tablet.width;
+				this.canvas.height = displaySizes.tablet.height;
 				break;
 			case "desktop":
-				this.canvas.width = 3840;
-				this.canvas.height = 2160;
+				this.canvas.width = displaySizes.desktop.width;
+				this.canvas.height = displaySizes.desktop.height;
 				break;
 			default:
 				console.log("Something went wrong with changing the display size");
