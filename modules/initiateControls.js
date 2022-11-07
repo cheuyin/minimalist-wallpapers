@@ -1,7 +1,6 @@
 function initiateControls(canvas) {
 	const CHAR_LIMIT = 30;
 	const mainCanvas = document.querySelector(".main_canvas");
-	const generateWallpaperButton = document.querySelector(".generate button");
 	const phraseInput = document.querySelector(".phrase input");
 	const lightDarkModeButton = document.querySelector(".light-dark-mode button");
 	const characterCounter = document.querySelector(".phrase .character_counter");
@@ -11,23 +10,11 @@ function initiateControls(canvas) {
 		".canvas_container .download_button"
 	);
 
-	function initiateGenerateWallpaperButton() {
-		generateWallpaperButton.addEventListener("click", () => {
-			canvas.updateText(phraseInput.value);
-			canvas.render();
-		});
-	}
-
 	function initiatePhraseInput() {
 		phraseInput.maxLength = CHAR_LIMIT;
 		phraseInput.addEventListener("input", (event) => {
 			updateWallpaperPhrase(event);
 			updateCharacterCounter();
-			if (checkForInputPause()) {
-				pauseInput();
-			} else {
-				unpauseInput();
-			}
 		});
 	}
 
@@ -71,7 +58,6 @@ function initiateControls(canvas) {
 		characterCounter.textContent = `${currentCharacterCount} / ${CHAR_LIMIT}`;
 	}
 
-	initiateGenerateWallpaperButton();
 	initiateLightDarkModeButton();
 	initiateFontStyleToggleButton();
 	initiateDisplaySizeOptions();
