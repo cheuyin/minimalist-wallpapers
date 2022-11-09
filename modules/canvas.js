@@ -14,7 +14,6 @@ const displaySizes = {
 };
 
 const initialDisplaySize = "desktop";
-const initialText = "Type something!";
 
 const colours = {
 	light: "#FBFBFB",
@@ -34,10 +33,10 @@ class Canvas {
 		this.canvas.width = displaySizes[initialDisplaySize].width;
 		this.canvas.height = displaySizes[initialDisplaySize].height;
 
-		this.text = initialText;
+		this.initialText = "Type something!";
+		this.text = this.initialText;
 		this.lightModeOn = true;
 		this.fontStyle = ["serif", fonts.serif];
-
 		this.render();
 	}
 

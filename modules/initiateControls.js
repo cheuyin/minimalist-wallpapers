@@ -15,7 +15,16 @@ function initiateControls(canvas) {
 		phraseInput.addEventListener("input", (event) => {
 			updateWallpaperPhrase(event);
 			updateCharacterCounter();
+			handleEmptyInput();
 		});
+	}
+
+	function handleEmptyInput() {
+		if (phraseInput.value.length === 0) {
+			canvas.updateText(canvas.initialText);
+		}
+
+		canvas.render();
 	}
 
 	function updateWallpaperPhrase(event) {
