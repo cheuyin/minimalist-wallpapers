@@ -14,7 +14,7 @@ const displaySizes = {
 };
 
 const initialDisplaySize = "desktop";
-const initialText = "Science";
+const initialText = "Type something!";
 
 const colours = {
 	light: "#FBFBFB",
@@ -36,7 +36,7 @@ class Canvas {
 
 		this.text = initialText;
 		this.lightModeOn = true;
-		this.fontStyle = fonts.serif;
+		this.fontStyle = ["serif", fonts.serif];
 
 		this.render();
 	}
@@ -51,7 +51,7 @@ class Canvas {
 		this.ctx.fillStyle = this.lightModeOn ? colours.dark : colours.light;
 		this.ctx.textAlign = "center";
 		this.ctx.textBaseline = "middle";
-		this.ctx.font = `${fontSize} ${this.fontStyle}`;
+		this.ctx.font = `${fontSize} ${this.fontStyle[1]}`;
 		this.ctx.fillText(this.text, this.canvas.width / 2, this.canvas.height / 2);
 	}
 
@@ -65,7 +65,9 @@ class Canvas {
 
 	switchFontStyle() {
 		this.fontStyle =
-			this.fontStyle === colours.sansSerif ? colours.serif : colours.sansSerif;
+			this.fontStyle[0] === "serif"
+				? ["sans-serif", fonts.sansSerif]
+				: ["serif", fonts.serif];
 	}
 
 	generateProportionalFontSize() {
