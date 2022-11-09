@@ -35,6 +35,9 @@ function initiateControls(canvas) {
 	function initiateLightDarkModeButton() {
 		lightDarkModeButton.addEventListener("click", () => {
 			canvas.switchMode();
+			lightDarkModeButton.textContent = canvas.lightModeOn
+				? "Light Mode"
+				: "Dark Mode";
 			canvas.render();
 		});
 	}
@@ -42,6 +45,8 @@ function initiateControls(canvas) {
 	function initiateFontStyleToggleButton() {
 		fontStyleToggleButton.addEventListener("click", () => {
 			canvas.switchFontStyle();
+			fontStyleToggleButton.textContent = canvas.fontStyle[0];
+
 			canvas.render();
 		});
 	}

@@ -36,7 +36,7 @@ class Canvas {
 		this.initialText = "Type something!";
 		this.text = this.initialText;
 		this.lightModeOn = true;
-		this.fontStyle = ["serif", fonts.serif];
+		this.fontStyle = ["Serif", fonts.serif];
 		this.render();
 	}
 
@@ -64,9 +64,9 @@ class Canvas {
 
 	switchFontStyle() {
 		this.fontStyle =
-			this.fontStyle[0] === "serif"
-				? ["sans-serif", fonts.sansSerif]
-				: ["serif", fonts.serif];
+			this.fontStyle[0] === "Serif"
+				? ["Sans-serif", fonts.sansSerif]
+				: ["Serif", fonts.serif];
 	}
 
 	generateProportionalFontSize() {
